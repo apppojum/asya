@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Asya Restorasyon | Tarihi Yapı ve Kültürel Miras Restorasyonu</title>
+<meta name="description" content="Asya Restorasyon — 20 yılı aşkın deneyimle tarihi cami, kale, konak, köprü ve çarşı restorasyonu. Kamu kurumları için tamamlanmış referans projeler." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f7f4ee;
+    --paper:#fffdf9;
+    --ink:#23201b;
+    --muted:#6b6359;
+    --line:#e1d9cc;
+    --brand:#6e4b2a;       /* koyu kahve / toprak */
+    --brand-2:#9a6b3a;     /* sıcak bronz */
+    --accent:#1f3d34;      /* koyu yeşil aksan */
+    --gold:#b08d57;
+    --red:#d6452a;         /* logo kırmızısı */
+    --navy:#22365c;        /* logo lacivert */
+    --shadow:0 18px 50px rgba(40,30,15,.14);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Source Sans 3',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brand-2);font-weight:600;margin-bottom:14px}
+  .btn{display:inline-block;padding:14px 30px;border-radius:2px;font-weight:600;letter-spacing:.04em;font-size:.92rem;transition:.25s;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--accent)}
+  .btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* LOGO */
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo svg{width:46px;height:40px;flex:none}
+  .logo .lt{line-height:1}
+  .logo .l1{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:.5px}
+  .logo .l2{display:inline-block;background:var(--red);color:#fff;font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;padding:2px 8px;font-weight:600;margin-top:3px}
+  header.scrolled .logo .l1{color:var(--navy)}
+
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(247,244,238,.97);border-bottom-color:var(--line);backdrop-filter:blur(8px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{color:rgba(255,255,255,.9);font-size:.9rem;font-weight:500;position:relative}
+  header.scrolled nav ul a{color:var(--ink)}
+  nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--gold);transition:.25s}
+  nav ul a:hover::after{width:100%}
+  .nav-cta{padding:9px 20px;border:1.5px solid var(--gold);color:#fff;font-size:.84rem;font-weight:600;border-radius:2px}
+  header.scrolled .nav-cta{color:var(--brand)}
+  .nav-cta:hover{background:var(--gold);color:#fff !important}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+  .burger span{width:26px;height:2px;background:#fff;transition:.3s}
+  header.scrolled .burger span{background:var(--ink)}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(25,18,10,.55),rgba(25,18,10,.66)),url('assets/img/proje_03_2.png') center/cover no-repeat;color:#fff}
+  .hero .wrap{padding-top:120px;padding-bottom:80px}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);max-width:18ch;margin-bottom:22px}
+  .hero p.lead{font-size:clamp(1.05rem,2vw,1.3rem);max-width:58ch;color:rgba(255,255,255,.9);font-weight:300;margin-bottom:34px}
+  .hero .actions{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.35);padding:8px 18px;border-radius:40px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:26px;color:rgba(255,255,255,.9)}
+  .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--red)}
+
+  /* STATS */
+  .stats{background:var(--accent);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:46px 24px;text-align:center}
+  .stat .num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:#fff;line-height:1}
+  .stat .lbl{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:8px}
+
+  section{padding:96px 0}
+  .sec-head{max-width:64ch;margin-bottom:54px}
+  .sec-head h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+  .sec-head p{color:var(--muted);font-size:1.08rem}
+  .center{text-align:center;margin-left:auto;margin-right:auto}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .about-grid img{width:100%;border-radius:3px;box-shadow:var(--shadow)}
+  .about-text h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:20px}
+  .about-text p{color:var(--muted);margin-bottom:16px}
+  .feat-list{list-style:none;margin-top:24px;display:grid;gap:14px}
+  .feat-list li{display:flex;gap:14px;align-items:flex-start;color:var(--ink)}
+  .feat-list .ic{flex:none;width:26px;height:26px;border:1.5px solid var(--gold);color:var(--brand);display:grid;place-items:center;font-size:.8rem;margin-top:3px}
+
+  /* SERVICES */
+  .services{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:var(--bg);border:1px solid var(--line);padding:36px 30px;border-radius:3px;transition:.28s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--gold)}
+  .card .ic{width:54px;height:54px;border:2px solid var(--brand);color:var(--brand);display:grid;place-items:center;margin-bottom:20px;border-radius:3px}
+  .card .ic svg{width:26px;height:26px}
+  .card h3{font-size:1.5rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.98rem}
+
+  /* PROJECTS */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+  .filter{padding:9px 22px;border:1px solid var(--line);background:var(--paper);border-radius:40px;font-size:.88rem;font-weight:500;cursor:pointer;transition:.2s;color:var(--muted)}
+  .filter:hover{border-color:var(--brand)}
+  .filter.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gitem{position:relative;overflow:hidden;border-radius:3px;cursor:pointer;aspect-ratio:4/3;background:#ddd}
+  .gitem img{width:100%;height:100%;object-fit:cover;transition:.5s;display:block}
+  .gitem:hover img{transform:scale(1.07)}
+  .gitem .cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 18px 16px;background:linear-gradient(transparent 40%,rgba(20,14,6,.9));color:#fff}
+  .gitem .cap .s{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+  .gitem .cap .t{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;line-height:1.1}
+  .gitem .cap .m{font-size:.8rem;color:rgba(255,255,255,.75);margin-top:4px;opacity:0;max-height:0;transition:.3s}
+  .gitem:hover .cap .m{opacity:1;max-height:40px}
+  .gitem .tagchip{position:absolute;top:12px;left:12px;background:rgba(255,253,249,.92);color:var(--brand);font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:5px 11px;border-radius:30px;z-index:2}
+
+  /* QUOTE BAND */
+  .quote-band{background:linear-gradient(rgba(110,75,42,.9),rgba(31,61,52,.92)),url('assets/img/proje_12.jpg') center/cover fixed;color:#fff;text-align:center;padding:96px 0}
+  .quote-band .q{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.4vw,2.5rem);max-width:24ch;margin:0 auto;line-height:1.3;font-weight:500}
+  .quote-band .by{margin-top:22px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+  /* TEAM */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .member{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:30px 24px;text-align:center;transition:.25s}
+  .member:hover{box-shadow:var(--shadow);border-color:var(--gold)}
+  .member .av{width:64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;margin:0 auto 16px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700}
+  .member h4{font-size:1.05rem;font-family:'Source Sans 3';font-weight:600}
+  .member p{color:var(--brand-2);font-size:.88rem;margin-top:2px}
+
+  /* REFERENCES */
+  .refs{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .ref-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px}
+  .ref{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+  .ref .ic{flex:none;width:30px;height:30px;border:1.5px solid var(--gold);color:var(--brand);display:grid;place-items:center;font-size:.8rem;border-radius:50%;margin-top:2px}
+  .ref h4{font-size:1rem;font-family:'Source Sans 3';font-weight:600}
+  .ref p{color:var(--muted);font-size:.88rem}
+  .orgs{margin-top:48px;text-align:center}
+  .orgs .lbl{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brand-2);margin-bottom:18px;font-weight:600}
+  .orgs .list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .orgs .org{background:var(--bg);border:1px solid var(--line);padding:9px 18px;border-radius:30px;font-size:.85rem;color:var(--ink);font-weight:500}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+  .info-row{display:flex;gap:16px;margin-bottom:26px;align-items:flex-start}
+  .info-row .ic{flex:none;width:46px;height:46px;border:1.5px solid var(--gold);color:var(--brand);display:grid;place-items:center;border-radius:3px}
+  .info-row .ic svg{width:22px;height:22px}
+  .info-row h4{font-size:1.05rem;margin-bottom:2px;font-family:'Source Sans 3';font-weight:600}
+  .info-row p{color:var(--muted);font-size:.96rem}
+  .info-row a{color:var(--muted)}
+  .info-row a:hover{color:var(--brand)}
+  .map-card{border:1px solid var(--line);border-radius:3px;overflow:hidden;box-shadow:var(--shadow)}
+  .map-card iframe{width:100%;height:340px;border:0;display:block}
+
+  /* FOOTER */
+  footer{background:#1c1812;color:rgba(255,255,255,.7);padding:60px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1.1fr;gap:40px;margin-bottom:40px}
+  footer .logo .l1{color:#fff}
+  footer p.fd{max-width:38ch;font-size:.92rem;margin-top:16px}
+  footer h5{color:#fff;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  footer ul{list-style:none;display:grid;gap:9px}
+  footer ul a,footer ul li{font-size:.92rem;color:rgba(255,255,255,.65)}
+  footer ul a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem;color:rgba(255,255,255,.5)}
+
+  /* LIGHTBOX */
+  .lb{position:fixed;inset:0;background:rgba(15,10,5,.95);z-index:200;display:none;align-items:center;justify-content:center;padding:30px}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:84vh;border-radius:3px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lb .close{position:absolute;top:24px;right:30px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+  .lb .nav-btn{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.6rem;cursor:pointer;padding:10px 18px;user-select:none}
+  .lb .prev{left:10px}.lb .next{right:10px}
+  .lb .cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:rgba(255,255,255,.88);font-size:.95rem;padding:0 20px}
+
+  @media(max-width:980px){
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .cards,.team-grid{grid-template-columns:repeat(2,1fr)}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .ref-grid{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);gap:34px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    nav ul,.nav-cta{display:none}
+    .burger{display:flex}
+    nav.open ul{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--paper);padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    nav.open ul a{color:var(--ink)}
+    .cards,.team-grid,.gallery,.foot-grid{grid-template-columns:1fr}
+    .quote-band{background-attachment:scroll}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="nav">
+    <a href="#home" class="logo" aria-label="Asya Restorasyon">
+      <svg viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 5 L54 46 L41 46 L30 25 L19 46 L6 46 Z" fill="#d6452a"/>
+        <path d="M13 41 Q30 16 47 41" stroke="#22365c" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="lt"><span class="l1">asya</span><br><span class="l2">restorasyon</span></span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#about">Hakkımızda</a></li>
+        <li><a href="#services">Uzmanlık</a></li>
+        <li><a href="#projects">Projeler</a></li>
+        <li><a href="#team">Kadro</a></li>
+        <li><a href="#refs">Referanslar</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">İletişim</a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot"></span> 20 yılı aşkın restorasyon deneyimi</span>
+    <h1>Tarihi mirası geleceğe taşıyoruz</h1>
+    <p class="lead">Asya Restorasyon; tarihi cami, kale, konak, köprü ve çarşıların aslına uygun restorasyonunu, kamu kurumlarının projeleri kapsamında titizlikle gerçekleştirir. Türkiye'nin dört bir yanında tamamladığımız eserlerle bu topraklara değer katıyoruz.</p>
+    <div class="actions">
+      <a href="#projects" class="btn btn-primary">Tamamlanan Projeler</a>
+      <a href="#about" class="btn btn-ghost">Firmamızı Tanıyın</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">20+</div><div class="lbl">Yıllık Deneyim</div></div>
+    <div class="stat"><div class="num">13+</div><div class="lbl">Tamamlanan Proje</div></div>
+    <div class="stat"><div class="num">9</div><div class="lbl">İlde Eser</div></div>
+    <div class="stat"><div class="num">%100</div><div class="lbl">Kamu Kurumu İşi</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <img src="assets/img/proje_09.jpg" alt="Asya Restorasyon tarafından restore edilen tarihi yapı" />
+    <div class="about-text">
+      <div class="eyebrow">Hakkımızda</div>
+      <h2>Geçmişe saygı, geleceğe emanet</h2>
+      <p>Asırlardır bu topraklarda pek çok uygarlığın bıraktığı izleri ileriki nesillere aktarabilmenin ne denli ciddi bir sorumluluk olduğunun farkında olarak, 20 yılı aşkın süredir çalışmalarımızı sürdürmekteyiz.</p>
+      <p>Firmamızın amacı; ulusal değerlerimiz olan tarihi kent dokusunu yaşatmak, tarihi ve kültürel değer taşıyan eserlerin özelliklerini koruyarak onarımlarının doğru bir görüşle yapılmasını sağlamaktır.</p>
+      <ul class="feat-list">
+        <li><span class="ic">✓</span><span>Teknik, ekonomik ve kaliteli hizmet anlayışı</span></li>
+        <li><span class="ic">✓</span><span>"Sürekli iyileştirme" felsefesiyle yönetilen süreçler</span></li>
+        <li><span class="ic">✓</span><span>Çevreye ve tarihi dokuya duyarlı uygulama</span></li>
+        <li><span class="ic">✓</span><span>Türkiye ekonomisine ve kültürel mirasa katkı</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">Uzmanlık Alanlarımız</div>
+      <h2>Kültürel mirasın her alanında</h2>
+      <p>Tescilli yapıların türüne ve ihtiyacına göre, aslına uygun restorasyon ve koruma uygulamaları gerçekleştiriyoruz.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M10 6h4M6 22V11a6 6 0 0 1 12 0v11M6 22h12M10 22v-5h4v5"/></svg></div>
+        <h3>Cami &amp; İbadethane</h3>
+        <p>Tarihi cami ve mescitlerin minare, kubbe, kalem işi ve mihrap-minber işçiliğiyle aslına uygun ihyası.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l3-2 3 2 3-2 3 2 3-2 3 2v12M3 21h18M7 21v-4h4v4"/></svg></div>
+        <h3>Kale &amp; Sur</h3>
+        <p>Tarihi kale ve surların arkeolojik veriler ışığında sağlamlaştırılması ve özgün dokuya uygun restorasyonu.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+        <h3>Tarihi Konak &amp; Yapı</h3>
+        <p>Sivil mimari örneği konaklar ve anıtsal binaların özgün malzeme ve geleneksel tekniklerle restorasyonu.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 16h20M4 16v-3a3 3 0 0 1 3-3M20 16v-3a3 3 0 0 0-3-3M9 10a3 3 0 0 1 6 0M2 20h20"/></svg></div>
+        <h3>Tarihi Köprü</h3>
+        <p>Kesme taş kemer köprülerin ve su yapılarının özgün tekniğiyle restorasyonu ve güçlendirilmesi.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V8h16v13M4 8l2-4h12l2 4M9 21v-7h6v7M4 21h16"/></svg></div>
+        <h3>Arasta, Çarşı &amp; Han</h3>
+        <p>Tarihi ticaret yapıları ve çarşıların cephe sağlıklaştırması ve özgün kimliğiyle yeniden işlevlendirilmesi.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M6 20V9l4-3v14M14 20V11l4-2v11M9 12h.01M9 15h.01"/></svg></div>
+        <h3>Sokak Sağlıklaştırma</h3>
+        <p>Tarihi yerleşimlerde sokak dokusunun, cephelerin ve kamusal alanların bütüncül koruma yaklaşımıyla iyileştirilmesi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">Tamamlanan Projeler</div>
+      <h2>Hayata geçirdiğimiz eserler</h2>
+      <p>Kamu kurum ve kuruluşlarının idaresinde tamamladığımız restorasyon projelerinden bir seçki.</p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter active" data-f="all">Tümü</button>
+      <button class="filter" data-f="cami">Cami</button>
+      <button class="filter" data-f="kale">Kale &amp; Sur</button>
+      <button class="filter" data-f="konak">Konak &amp; Yapı</button>
+      <button class="filter" data-f="kopru">Köprü</button>
+      <button class="filter" data-f="carsi">Arasta &amp; Çarşı</button>
+      <button class="filter" data-f="sokak">Sokak</button>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <div class="wrap">
+    <p class="q">"Ulusal değerlerimiz olan tarihi kent dokusunu yaşatmak ve gelecek nesillere aktarmak."</p>
+    <div class="by">Asya Restorasyon</div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">Teknik Kadro</div>
+      <h2>Uzman ekibimiz</h2>
+      <p>Mimar ve restoratörlerden oluşan deneyimli teknik kadromuzla her projeye bilimsel koruma anlayışıyla yaklaşıyoruz.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member"><div class="av">SÖ</div><h4>Salimat Özil Özkök</h4><p>Mimar</p></div>
+      <div class="member"><div class="av">MB</div><h4>Melis Balık Keşçi</h4><p>Yüksek Mimar</p></div>
+      <div class="member"><div class="av">EY</div><h4>Elif Yılmaz</h4><p>Mimar</p></div>
+      <div class="member"><div class="av">ES</div><h4>Elif Sarı</h4><p>Restoratör</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="refs" id="refs">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">Referanslar</div>
+      <h2>Bizi tanıyanlar</h2>
+      <p>Projelerimizde birlikte çalıştığımız kamu kurumları ve alanında uzman referanslarımız.</p>
+    </div>
+    <div class="ref-grid">
+      <div class="ref"><span class="ic">★</span><div><h4>Salman Ünlügedik</h4><p>Rölöve ve Anıtlar Müdürü</p></div></div>
+      <div class="ref"><span class="ic">★</span><div><h4>Prof. Dr. Feridun Çılı</h4><p>İTÜ Öğretim Üyesi</p></div></div>
+      <div class="ref"><span class="ic">★</span><div><h4>Dr. Leyla Kaderli</h4><p>Restorasyon Uzmanı, Doktora Öğretim Görevlisi</p></div></div>
+      <div class="ref"><span class="ic">★</span><div><h4>Faruk Denli</h4><p>Körfez Belediyesi Başkan Yardımcısı</p></div></div>
+      <div class="ref"><span class="ic">★</span><div><h4>Mustafa Yel</h4><p>Tekirdağ İl Özel İdaresi Genel Sekreteri</p></div></div>
+      <div class="ref"><span class="ic">★</span><div><h4>Adil Yılmaz</h4><p>Antakya Büyükşehir Belediyesi, İnşaat Mühendisi</p></div></div>
+      <div class="ref"><span class="ic">★</span><div><h4>Hidayet Kara</h4><p>Selçuklu Belediyesi Başkan Yardımcısı</p></div></div>
+    </div>
+    <div class="orgs">
+      <div class="lbl">Birlikte Çalıştığımız Kurumlar</div>
+      <div class="list">
+        <span class="org">Vakıflar Genel Müdürlüğü</span>
+        <span class="org">Karayolları Genel Müdürlüğü</span>
+        <span class="org">İzmir Büyükşehir Belediyesi</span>
+        <span class="org">Antalya Büyükşehir Belediyesi</span>
+        <span class="org">Mardin Büyükşehir Belediyesi</span>
+        <span class="org">Bergama Belediyesi</span>
+        <span class="org">Körfez Belediyesi</span>
+        <span class="org">Selçuklu Belediyesi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">İletişim</div>
+      <h2>Bize ulaşın</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Adres</h4><p>Kazım Karabekir Mahallesi, 1033. Sokak No:6 Daire:3<br>Esenler / İstanbul</p></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><h4>Telefon</h4><p><a href="tel:+902128238269">0212 823 82 69</a><br><a href="tel:+905333904701">0533 390 47 01</a></p></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><h4>E-posta</h4><p><a href="mailto:asyarestorasyon@hotmail.com">asyarestorasyon@hotmail.com</a></p></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
+          <div><h4>Web</h4><p><a href="https://asyarestorasyon.com.tr" target="_blank" rel="noopener">asyarestorasyon.com.tr</a></p></div>
+        </div>
+      </div>
+      <div class="map-card">
+        <iframe title="Asya Restorasyon Konum" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Kaz%C4%B1m%20Karabekir%20Mahallesi%201033.%20Sokak%20Esenler%20%C4%B0stanbul&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">
+          <svg viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 5 L54 46 L41 46 L30 25 L19 46 L6 46 Z" fill="#d6452a"/>
+            <path d="M13 41 Q30 16 47 41" stroke="#5b78a8" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span class="lt"><span class="l1">asya</span><br><span class="l2">restorasyon</span></span>
+        </div>
+        <p class="fd">20 yılı aşkın deneyimle tarihi yapı ve kültürel miras restorasyonu. Geçmişe saygı, geleceğe emanet.</p>
+      </div>
+      <div>
+        <h5>Menü</h5>
+        <ul>
+          <li><a href="#about">Hakkımızda</a></li>
+          <li><a href="#services">Uzmanlık</a></li>
+          <li><a href="#projects">Projeler</a></li>
+          <li><a href="#refs">Referanslar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>İletişim</h5>
+        <ul>
+          <li>Kazım Karabekir Mah. 1033. Sk. No:6/3, Esenler / İstanbul</li>
+          <li><a href="tel:+902128238269">0212 823 82 69</a> · <a href="tel:+905333904701">0533 390 47 01</a></li>
+          <li><a href="mailto:asyarestorasyon@hotmail.com">asyarestorasyon@hotmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Asya Restorasyon. Tüm hakları saklıdır.</span>
+      <span>Tasarım &amp; geliştirme: <a href="https://piksel.work" target="_blank" rel="noopener" style="color:var(--gold)">piksel.work</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <span class="close" id="lbClose">&times;</span>
+  <span class="nav-btn prev" id="lbPrev">&#8249;</span>
+  <img id="lbImg" src="" alt="" />
+  <span class="nav-btn next" id="lbNext">&#8250;</span>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+  // 13 ana proje + ek görseller — kataloğdan birebir bilgilerle
+  const projects = [
+    {img:'proje_14.jpg', t:'Tarihi Hisar Camii', f:'cami', yer:'İzmir / Konak', idare:'Vakıflar Bölge Müdürlüğü', yil:'2010'},
+    {img:'proje_03.jpg', t:'Tarihi Hereke Kalesi', f:'kale', yer:'Kocaeli / Körfez', idare:'Körfez Belediyesi', yil:'2015–2016'},
+    {img:'proje_17.jpg', t:'Tarihi Gevale Kalesi', f:'kale', yer:'Konya / Selçuklu', idare:'Selçuklu Belediyesi', yil:'2016'},
+    {img:'proje_06.jpg', t:'Said Nursi Hz. Müzesi', f:'konak', yer:'Kastamonu / İnebolu', idare:'Antalya Büyükşehir Belediyesi', yil:'2017–2018'},
+    {img:'proje_15.jpg', t:'Edirne Tarihi Köprüler', f:'kopru', yer:'Edirne / Merkez', idare:'Karayolları 1. Bölge Müdürlüğü', yil:'2011–2012'},
+    {img:'proje_02.jpg', t:'Tarihi Kirazoğlu Konağı', f:'konak', yer:'İzmir / Tire', idare:'İzmir Büyükşehir Belediyesi', yil:'2008–2009'},
+    {img:'proje_09.jpg', t:'İnebolu Türk Ocağı Binası', f:'konak', yer:'Kastamonu / İnebolu', idare:'Antalya Büyükşehir Belediyesi', yil:'2005–2006'},
+    {img:'proje_13.jpg', t:'Haburman (Çermik) Köprüsü', f:'kopru', yer:'Diyarbakır / Çermik', idare:'Karayolları Gn. Md. (AB Fonu)', yil:'2011–2012'},
+    {img:'proje_11.jpg', t:'Bergama Arasta – Osmanlı Çarşısı', f:'carsi', yer:'İzmir / Bergama', idare:'Bergama Belediyesi', yil:'2011–2012'},
+    {img:'proje_08.jpg', t:'Mengen Camii', f:'cami', yer:'Bolu / Mengen', idare:'Vakıflar Ankara Bölge Md.', yil:'2006–2007'},
+    {img:'proje_23.jpg', t:'Namık Kemal Kütüphanesi (İtalyan Konağı)', f:'konak', yer:'Tekirdağ', idare:'Tekirdağ Belediyesi / Kültür Bakanlığı', yil:'2018–2019'},
+    {img:'proje_20.jpg', t:'Sille Hacı Ali Ağa Sokak Sağlıklaştırması', f:'sokak', yer:'Konya / Selçuklu', idare:'Selçuklu Belediyesi', yil:'2018–2019'},
+    {img:'proje_22.jpg', t:'Artuklu Tarihi Çarşılar İyileştirmesi', f:'carsi', yer:'Mardin / Artuklu', idare:'Mardin Büyükşehir Belediyesi', yil:'2021–2022'},
+    // ek görseller
+    {img:'proje_10.jpg', t:'Hereke Kalesi (Hava Görünümü)', f:'kale', yer:'Kocaeli / Körfez', idare:'Körfez Belediyesi', yil:'2015–2016'},
+    {img:'proje_12.jpg', t:'Hereke Kalesi (Sur Düzeni)', f:'kale', yer:'Kocaeli / Körfez', idare:'Körfez Belediyesi', yil:'2015–2016'},
+    {img:'proje_07.jpg', t:'Said Nursi Hz. Müzesi (Cephe)', f:'konak', yer:'Kastamonu / İnebolu', idare:'Antalya Büyükşehir Belediyesi', yil:'2017–2018'},
+    {img:'proje_19.jpg', t:'Saraçhane Bağlantı Köprüsü', f:'kopru', yer:'Edirne / Merkez', idare:'Karayolları 1. Bölge Müdürlüğü', yil:'2011–2012'},
+    {img:'proje_18.jpg', t:'Mengen Camii (Minare)', f:'cami', yer:'Bolu / Mengen', idare:'Vakıflar Ankara Bölge Md.', yil:'2006–2007'},
+    {img:'proje_25.jpg', t:'İtalyan Konağı (Cephe)', f:'konak', yer:'Tekirdağ', idare:'Tekirdağ Belediyesi / Kültür Bakanlığı', yil:'2018–2019'},
+    {img:'proje_21.jpg', t:'Bergama Arasta (İç Sokak)', f:'carsi', yer:'İzmir / Bergama', idare:'Bergama Belediyesi', yil:'2011–2012'},
+    {img:'proje_01.jpg', t:'İnebolu Türk Ocağı (Tarihi Fotoğraf)', f:'konak', yer:'Kastamonu / İnebolu', idare:'Antalya Büyükşehir Belediyesi', yil:'2005–2006'},
+    {img:'proje_24.jpg', t:'Haburman Köprüsü (Detay)', f:'kopru', yer:'Diyarbakır / Çermik', idare:'Karayolları Gn. Md. (AB Fonu)', yil:'2011–2012'}
+  ];
+
+  const tagLabel={cami:'Cami',kale:'Kale & Sur',konak:'Konak & Yapı',kopru:'Köprü',carsi:'Arasta & Çarşı',sokak:'Sokak'};
+  const gallery=document.getElementById('gallery');
+  function render(filter){
+    gallery.innerHTML='';
+    projects.filter(p=>filter==='all'||p.f===filter).forEach(p=>{
+      const d=document.createElement('div');
+      d.className='gitem';
+      d.innerHTML=`<span class="tagchip">${tagLabel[p.f]}</span>
+        <img src="assets/img/${p.img}" alt="${p.t}" loading="lazy" />
+        <div class="cap"><div class="s">${p.yer}</div><div class="t">${p.t}</div><div class="m">${p.idare} · ${p.yil}</div></div>`;
+      d.onclick=()=>openLb(p);
+      gallery.appendChild(d);
+    });
+  }
+  render('all');
+
+  document.querySelectorAll('.filter').forEach(b=>{
+    b.onclick=()=>{document.querySelector('.filter.active').classList.remove('active');b.classList.add('active');render(b.dataset.f);};
+  });
+
+  // Lightbox
+  const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+  let curList=[],curIdx=0;
+  function openLb(p){
+    const a=document.querySelector('.filter.active').dataset.f;
+    curList=projects.filter(x=>a==='all'||x.f===a);
+    curIdx=curList.indexOf(p);show();lb.classList.add('open');
+  }
+  function show(){const p=curList[curIdx];lbImg.src='assets/img/'+p.img;lbCap.textContent=`${p.t} — ${p.yer} · ${p.idare} · ${p.yil}`;}
+  document.getElementById('lbClose').onclick=()=>lb.classList.remove('open');
+  document.getElementById('lbNext').onclick=()=>{curIdx=(curIdx+1)%curList.length;show();};
+  document.getElementById('lbPrev').onclick=()=>{curIdx=(curIdx-1+curList.length)%curList.length;show();};
+  lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open');};
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')document.getElementById('lbNext').click();if(e.key==='ArrowLeft')document.getElementById('lbPrev').click();});
+
+  const header=document.getElementById('header');
+  window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>40));
+  document.getElementById('burger').onclick=()=>document.getElementById('nav').classList.toggle('open');
+  document.querySelectorAll('#nav a').forEach(a=>a.onclick=()=>document.getElementById('nav').classList.remove('open'));
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
