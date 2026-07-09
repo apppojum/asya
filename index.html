@@ -15,12 +15,12 @@
     --ink:#23201b;
     --muted:#6b6359;
     --line:#e1d9cc;
-    --brand:#6e4b2a;       /* koyu kahve / toprak */
-    --brand-2:#9a6b3a;     /* sıcak bronz */
-    --accent:#1f3d34;      /* koyu yeşil aksan */
+    --brand:#6e4b2a;
+    --brand-2:#9a6b3a;
+    --accent:#1f3d34;
     --gold:#b08d57;
-    --red:#d6452a;         /* logo kırmızısı */
-    --navy:#22365c;        /* logo lacivert */
+    --red:#d6452a;
+    --navy:#22365c;
     --shadow:0 18px 50px rgba(40,30,15,.14);
     --maxw:1180px;
   }
@@ -38,32 +38,35 @@
   .btn-ghost:hover{background:rgba(255,255,255,.12)}
 
   /* LOGO */
-  .logo{display:flex;align-items:center;gap:12px}
-  .logo svg{width:46px;height:40px;flex:none}
+  .logo{display:flex;align-items:center;gap:15px}
+  .logo svg{width:66px;height:56px;flex:none;transition:.3s}
   .logo .lt{line-height:1}
-  .logo .l1{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:.5px}
-  .logo .l2{display:inline-block;background:var(--red);color:#fff;font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;padding:2px 8px;font-weight:600;margin-top:3px}
+  .logo .l1{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;color:#fff;letter-spacing:.5px;transition:.3s}
+  .logo .l2{display:inline-block;background:var(--red);color:#fff;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;padding:3px 10px;font-weight:600;margin-top:5px;transition:.3s}
   header.scrolled .logo .l1{color:var(--navy)}
+  header.scrolled .logo svg{width:58px;height:49px}
+  header.scrolled .logo .l1{font-size:2rem}
 
   /* HEADER */
   header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;border-bottom:1px solid transparent}
   header.scrolled{background:rgba(247,244,238,.97);border-bottom-color:var(--line);backdrop-filter:blur(8px)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
-  nav ul{display:flex;gap:28px;list-style:none}
-  nav ul a{color:rgba(255,255,255,.9);font-size:.9rem;font-weight:500;position:relative}
+  nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+  nav ul a{color:rgba(255,255,255,.92);font-size:.92rem;font-weight:500;position:relative}
   header.scrolled nav ul a{color:var(--ink)}
   nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--gold);transition:.25s}
   nav ul a:hover::after{width:100%}
-  .nav-cta{padding:9px 20px;border:1.5px solid var(--gold);color:#fff;font-size:.84rem;font-weight:600;border-radius:2px}
+  .nav-cta{padding:10px 22px;border:1.5px solid var(--gold);color:#fff;font-size:.86rem;font-weight:600;border-radius:2px;white-space:nowrap}
   header.scrolled .nav-cta{color:var(--brand)}
   .nav-cta:hover{background:var(--gold);color:#fff !important}
-  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+  .burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;border:1px solid rgba(255,255,255,.4);border-radius:3px}
+  header.scrolled .burger{border-color:var(--line)}
   .burger span{width:26px;height:2px;background:#fff;transition:.3s}
   header.scrolled .burger span{background:var(--ink)}
 
   /* HERO */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(25,18,10,.55),rgba(25,18,10,.66)),url('assets/img/proje_03_2.png') center/cover no-repeat;color:#fff}
-  .hero .wrap{padding-top:120px;padding-bottom:80px}
+  .hero .wrap{padding-top:140px;padding-bottom:80px}
   .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);max-width:18ch;margin-bottom:22px}
   .hero p.lead{font-size:clamp(1.05rem,2vw,1.3rem);max-width:58ch;color:rgba(255,255,255,.9);font-weight:300;margin-bottom:34px}
   .hero .actions{display:flex;gap:16px;flex-wrap:wrap}
@@ -174,6 +177,13 @@
   .lb .prev{left:10px}.lb .next{right:10px}
   .lb .cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:rgba(255,255,255,.88);font-size:.95rem;padding:0 20px}
 
+  /* açılır menü (hamburger) — orta ve küçük ekranlar */
+  @media(max-width:960px){
+    nav ul,.nav-cta{display:none}
+    .burger{display:flex}
+    nav.open ul{display:flex;position:absolute;top:96px;left:0;right:0;flex-direction:column;background:var(--paper);padding:22px 26px;gap:20px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+    nav.open ul a{color:var(--ink);font-size:1.05rem}
+  }
   @media(max-width:980px){
     .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
     .cards,.team-grid{grid-template-columns:repeat(2,1fr)}
@@ -183,10 +193,10 @@
     .foot-grid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:640px){
-    nav ul,.nav-cta{display:none}
-    .burger{display:flex}
-    nav.open ul{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--paper);padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
-    nav.open ul a{color:var(--ink)}
+    .logo svg{width:54px;height:46px}
+    .logo .l1{font-size:1.85rem}
+    .logo .l2{font-size:.62rem;letter-spacing:.26em}
+    nav.open ul{top:84px}
     .cards,.team-grid,.gallery,.foot-grid{grid-template-columns:1fr}
     .quote-band{background-attachment:scroll}
     section{padding:64px 0}
@@ -216,7 +226,7 @@
       </ul>
     </nav>
     <a href="#contact" class="nav-cta">İletişim</a>
-    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    <div class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></div>
   </div>
 </header>
 
@@ -407,7 +417,7 @@
         </div>
         <div class="info-row">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
-          <div><h4>Web</h4><p><a href="https://asyarestorasyon.com.tr" target="_blank" rel="noopener">asyarestorasyon.com.tr</a></p></div>
+          <div><h4>Web</h4><p><a href="https://asya-restorasyon.com" target="_blank" rel="noopener">asya-restorasyon.com</a></p></div>
         </div>
       </div>
       <div class="map-card">
@@ -467,7 +477,6 @@
 </div>
 
 <script>
-  // 13 ana proje + ek görseller — kataloğdan birebir bilgilerle
   const projects = [
     {img:'proje_14.jpg', t:'Tarihi Hisar Camii', f:'cami', yer:'İzmir / Konak', idare:'Vakıflar Bölge Müdürlüğü', yil:'2010'},
     {img:'proje_03.jpg', t:'Tarihi Hereke Kalesi', f:'kale', yer:'Kocaeli / Körfez', idare:'Körfez Belediyesi', yil:'2015–2016'},
@@ -482,7 +491,6 @@
     {img:'proje_23.jpg', t:'Namık Kemal Kütüphanesi (İtalyan Konağı)', f:'konak', yer:'Tekirdağ', idare:'Tekirdağ Belediyesi / Kültür Bakanlığı', yil:'2018–2019'},
     {img:'proje_20.jpg', t:'Sille Hacı Ali Ağa Sokak Sağlıklaştırması', f:'sokak', yer:'Konya / Selçuklu', idare:'Selçuklu Belediyesi', yil:'2018–2019'},
     {img:'proje_22.jpg', t:'Artuklu Tarihi Çarşılar İyileştirmesi', f:'carsi', yer:'Mardin / Artuklu', idare:'Mardin Büyükşehir Belediyesi', yil:'2021–2022'},
-    // ek görseller
     {img:'proje_10.jpg', t:'Hereke Kalesi (Hava Görünümü)', f:'kale', yer:'Kocaeli / Körfez', idare:'Körfez Belediyesi', yil:'2015–2016'},
     {img:'proje_12.jpg', t:'Hereke Kalesi (Sur Düzeni)', f:'kale', yer:'Kocaeli / Körfez', idare:'Körfez Belediyesi', yil:'2015–2016'},
     {img:'proje_07.jpg', t:'Said Nursi Hz. Müzesi (Cephe)', f:'konak', yer:'Kastamonu / İnebolu', idare:'Antalya Büyükşehir Belediyesi', yil:'2017–2018'},
@@ -514,7 +522,6 @@
     b.onclick=()=>{document.querySelector('.filter.active').classList.remove('active');b.classList.add('active');render(b.dataset.f);};
   });
 
-  // Lightbox
   const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
   let curList=[],curIdx=0;
   function openLb(p){
