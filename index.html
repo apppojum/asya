@@ -38,31 +38,26 @@
   .btn-ghost:hover{background:rgba(255,255,255,.12)}
 
   /* LOGO */
-  .logo{display:flex;align-items:center;gap:15px}
-  .logo svg{width:66px;height:56px;flex:none;transition:.3s}
-  .logo .lt{line-height:1}
-  .logo .l1{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;color:#fff;letter-spacing:.5px;transition:.3s}
-  .logo .l2{display:inline-block;background:var(--red);color:#fff;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;padding:3px 10px;font-weight:600;margin-top:5px;transition:.3s}
-  header.scrolled .logo .l1{color:var(--navy)}
-  header.scrolled .logo svg{width:58px;height:49px}
-  header.scrolled .logo .l1{font-size:2rem}
+  .logo{display:flex;align-items:center}
+  .logo-img{height:72px;width:auto;display:block;transition:.3s}
+  header.scrolled .logo-img{height:58px}
 
   /* HEADER */
   header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;border-bottom:1px solid transparent}
-  header.scrolled{background:rgba(247,244,238,.97);border-bottom-color:var(--line);backdrop-filter:blur(8px)}
+  header.scrolled{background:rgba(24,20,16,.96);border-bottom-color:rgba(255,255,255,.1);backdrop-filter:blur(8px)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
-  nav ul{display:flex;gap:26px;list-style:none;align-items:center}
-  nav ul a{color:rgba(255,255,255,.92);font-size:.92rem;font-weight:500;position:relative}
-  header.scrolled nav ul a{color:var(--ink)}
-  nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--gold);transition:.25s}
-  nav ul a:hover::after{width:100%}
-  .nav-cta{padding:10px 22px;border:1.5px solid var(--gold);color:#fff;font-size:.86rem;font-weight:600;border-radius:2px;white-space:nowrap}
-  header.scrolled .nav-cta{color:var(--brand)}
-  .nav-cta:hover{background:var(--gold);color:#fff !important}
-  .burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;border:1px solid rgba(255,255,255,.4);border-radius:3px}
-  header.scrolled .burger{border-color:var(--line)}
-  .burger span{width:26px;height:2px;background:#fff;transition:.3s}
-  header.scrolled .burger span{background:var(--ink)}
+  /* Menü her ekranda açılır (hamburger) menüdür */
+  nav ul{display:none;list-style:none}
+  nav.open ul{display:flex;position:absolute;top:112px;right:24px;width:min(320px,calc(100vw - 48px));flex-direction:column;list-style:none;background:var(--paper);padding:20px 26px;gap:16px;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow)}
+  nav.open ul a{color:var(--ink);font-size:1.08rem;font-weight:500;transition:.2s}
+  nav.open ul a:hover{color:var(--brand)}
+  nav.open ul li{border-bottom:1px solid var(--line);padding-bottom:14px}
+  nav.open ul li:last-child{border-bottom:none;padding-bottom:0}
+  .nav-cta{display:none}
+  .burger{display:flex;flex-direction:column;gap:6px;cursor:pointer;padding:10px;border:1px solid rgba(255,255,255,.45);border-radius:3px}
+  header.scrolled .burger{border-color:rgba(255,255,255,.45)}
+  .burger span{width:28px;height:2px;background:#fff;transition:.3s}
+  header.scrolled .burger span{background:#fff}
 
   /* HERO */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(25,18,10,.55),rgba(25,18,10,.66)),url('assets/img/proje_03_2.png') center/cover no-repeat;color:#fff}
@@ -160,7 +155,6 @@
   /* FOOTER */
   footer{background:#1c1812;color:rgba(255,255,255,.7);padding:60px 0 28px}
   .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1.1fr;gap:40px;margin-bottom:40px}
-  footer .logo .l1{color:#fff}
   footer p.fd{max-width:38ch;font-size:.92rem;margin-top:16px}
   footer h5{color:#fff;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
   footer ul{list-style:none;display:grid;gap:9px}
@@ -177,13 +171,6 @@
   .lb .prev{left:10px}.lb .next{right:10px}
   .lb .cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:rgba(255,255,255,.88);font-size:.95rem;padding:0 20px}
 
-  /* açılır menü (hamburger) — orta ve küçük ekranlar */
-  @media(max-width:960px){
-    nav ul,.nav-cta{display:none}
-    .burger{display:flex}
-    nav.open ul{display:flex;position:absolute;top:96px;left:0;right:0;flex-direction:column;background:var(--paper);padding:22px 26px;gap:20px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
-    nav.open ul a{color:var(--ink);font-size:1.05rem}
-  }
   @media(max-width:980px){
     .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
     .cards,.team-grid{grid-template-columns:repeat(2,1fr)}
@@ -193,10 +180,9 @@
     .foot-grid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:640px){
-    .logo svg{width:54px;height:46px}
-    .logo .l1{font-size:1.85rem}
-    .logo .l2{font-size:.62rem;letter-spacing:.26em}
-    nav.open ul{top:84px}
+    .logo-img{height:56px}
+    header.scrolled .logo-img{height:48px}
+    nav.open ul{top:88px;right:16px}
     .cards,.team-grid,.gallery,.foot-grid{grid-template-columns:1fr}
     .quote-band{background-attachment:scroll}
     section{padding:64px 0}
@@ -209,11 +195,7 @@
 <header id="header">
   <div class="nav">
     <a href="#home" class="logo" aria-label="Asya Restorasyon">
-      <svg viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 5 L54 46 L41 46 L30 25 L19 46 L6 46 Z" fill="#d6452a"/>
-        <path d="M13 41 Q30 16 47 41" stroke="#22365c" stroke-width="5" fill="none" stroke-linecap="round"/>
-      </svg>
-      <span class="lt"><span class="l1">asya</span><br><span class="l2">restorasyon</span></span>
+      <img class="logo-img" src="assets/img/asya-logo.png" alt="Asya Restorasyon" />
     </a>
     <nav id="nav">
       <ul>
@@ -434,11 +416,7 @@
     <div class="foot-grid">
       <div>
         <div class="logo">
-          <svg viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30 5 L54 46 L41 46 L30 25 L19 46 L6 46 Z" fill="#d6452a"/>
-            <path d="M13 41 Q30 16 47 41" stroke="#5b78a8" stroke-width="5" fill="none" stroke-linecap="round"/>
-          </svg>
-          <span class="lt"><span class="l1">asya</span><br><span class="l2">restorasyon</span></span>
+          <img class="logo-img" src="assets/img/asya-logo.png" alt="Asya Restorasyon" style="height:88px" />
         </div>
         <p class="fd">20 yılı aşkın deneyimle tarihi yapı ve kültürel miras restorasyonu. Geçmişe saygı, geleceğe emanet.</p>
       </div>
